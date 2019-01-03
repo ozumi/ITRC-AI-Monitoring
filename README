@@ -1,0 +1,9 @@
+How to Start
+1. pip install -r requirements.txt
+2. python manage.py makemigrations
+3. python manage.py migrate
+4. python manage.py shell
+    >>> from utils.sensor_import import data_migration
+    >>> data_migration
+
+5. python manage.py runserver 0.0.0.0:<port>

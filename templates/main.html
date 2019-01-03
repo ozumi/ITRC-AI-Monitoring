@@ -1,0 +1,144 @@
+{% load staticfiles %}
+{% load leaflet_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!-- jQuery library -->
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+
+    <!-- d3js -->
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="http://d3js.org/queue.v1.min.js"></script>
+    <script src="{% static 'library/js/d3-tip.js' %}"></script>
+    <script src="//d3js.org/d3-scale-chromatic.v0.3.min.js"></script>
+
+    <!--leaflet-->
+    {% leaflet_js %}
+    {% leaflet_css %}
+    <link rel="stylesheet" href="{% static 'library/css/leaflet.marker.highlight.css' %}">
+    <script src="{% static 'library/js/leaflet.marker.highlight.js' %}"></script>
+    <script src="{% static 'library/js/heatmap.js' %}"></script>
+    <script src="{% static 'library/js/leaflet-heatmap.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'library/css/leaflet-draw.css' %}"/>
+    <script src="{% static 'library/js/leaflet-draw.js' %}"></script>
+    <script src="{% static 'library/js/leaflet.curve.js' %}"></script>
+    <script src="{% static 'library/js/slideControl.js' %}"></script>
+
+    <!--sementic ui-->
+    <link rel="stylesheet" type="text/css" href="{% static 'library/semantic-ui/dist/semantic.css' %}">
+    <script
+            src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+            crossorigin="anonymous"></script>
+    <script src="{% static 'library/semantic-ui/dist/semantic.js' %}"></script>
+
+    <!--bird marker-->
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'library/css/leaflet.awesome-markers.css' %}">
+    <script src="{% static 'library/js/leaflet.awesome-markers.js' %}"></script>
+
+</head>
+<body>
+
+<div class="ui top fixed menu">
+        <a href="#" class="header item">
+            <img class="logo" src="{% static 'library/semantic-ui/examples/assets/images/logo.png' %}">
+            ITRC Demo
+        </a>
+        <a href="#" class="item">Home</a>
+        <div class="ui simple dropdown item">
+            Word Bird <i class="dropdown icon"></i>
+            <div class="menu">
+                <a class="world item" id="bird1" href="#">Bird 1</a>
+                <a class="world item" id="bird2" href="#">Bird 2</a>
+                <a class="world item" id="bird3" href="#">Bird 3</a>
+                <a class="world item" id="bird4" href="#">Bird 4</a>
+                <a class="world item" id="bird5" href="#">Bird 5</a>
+                <a class="world item" id="bird6" href="#">Bird 6</a>
+                <a class="world item" id="bird7" href="#">Bird 7</a>
+                <a class="world item" id="bird8" href="#">Bird 8</a>
+                <a class="world item" id="bird9" href="#">Bird 9</a>
+                <a class="world item" id="bird10" href="#">Bird 10</a>
+            </div>
+        </div>
+        <div class="ui simple dropdown item">
+            Korea Bird <i class="dropdown icon"></i>
+            <div class="menu">
+                <a class="korea item" id="kbird1" href="#">Bird 1</a>
+                <a class="korea item" id="kbird2" href="#">Bird 2</a>
+                <a class="korea item" id="kbird3" href="#">Bird 3</a>
+            </div>
+        </div>
+        <div class="ui simple dropdown item">
+            Public Data <i class="dropdown icon"></i>
+            <div class="menu">
+                <a class="choro item" id="bury" href="#">매장</a>
+                <a class="choro item" id="water" href="#">수질</a>
+                <a class="choro item" id="air" href="#">공기</a>
+            </div>
+        </div>
+
+        <div class="ui form">
+            <div class="ui toggle checkbox">
+                <input id="path" class="toggle-check" type="checkbox" name="vis"  checked="checked">
+                <label>Trejactory</label>
+            </div>
+            <div class="ui toggle checkbox">
+                <input id="heatmap" class="toggle-check" type="checkbox" name="vis" checked="checked">
+                <label>Heatmap</label>
+            </div>
+            <div class="ui toggle checkbox">
+                <input id="marker" class="toggle-check" type="checkbox" name="vis" checked="checked">
+                <label>Marker</label>
+            </div>
+            <div class="ui toggle checkbox">
+                <input id="important" class="toggle-check" type="checkbox" name="vis" >
+                <label>Importance</label>
+            </div>
+        </div>
+</div>
+
+<div class="contents">
+    <div class="mapcontainer">
+      {% leaflet_map "mymap" callback="window.map_init_basic" %}
+    </div>
+
+    <div class="graphcontainer" id="graphContainer">
+        <div id="graph1"></div>
+    </div>
+</div>
+<script type="text/javascript">
+    function map_init_basic (map, options) {
+        mapManager.MAP = map;
+        mapManager.init(container);
+
+{#        var graph1 = new chartManager("graph1");#}
+{#        graph1.init();#}
+    }
+</script>
+
+<!--css-->
+<link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+
+<!-- data -->
+<script src="{% static 'data/points.js' %}"></script>
+
+<!-- draw chart-->
+<script src="{% static 'js/drawInfo.js' %}"></script>
+
+<!-- init -->
+<script src="{% static 'js/initMap.js' %}"></script>
+<script src="{% static 'js/uiLayer.js' %}"></script>
+<script src="{% static 'js/drawChoropleth.js' %}"></script>
+<script src="{% static 'js/drawBird.js' %}"></script>
+<script src="{% static 'js/drawLinechart.js' %}"></script>
+<script src="{% static 'js/init.js' %}"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<html>
+<body>
+map
+
+<form action="/map/" method="POST">
+  <!--timestamp: <input type="text" name="timestamp"><br>-->
+  id: <input type="text" name="id"><br>
+  tag: <input type="text" name="tag"><br>
+  <!--altitude: <input type="text" name="altitude"><br>-->
+  <!--long: <input type="text" name="long"><br>-->
+  <!--sensor1: <input type="text" name="sensor1"><br>-->
+  <!--sensor2: <input type="text" name="sensor2"><br>-->
+  <!--sensor3: <input type="text" name="sensor3"><br>-->
+  <!--sensor4: <input type="text" name="sensor4"><br>-->
+  <!--lat: <input type="text" name="lat"><br>-->
+  <input type="submit" value="Find!">
+</form>
+
+<div id="result">
+{% for item in result %}
+  <li>
+    id: {{item.tag_id}}
+    altitude: {{item.altitude}}
+    long: {{item.var_long}}
+    sensor1: {{item.sensor1}}
+    sensor2: {{item.sensor2}}
+    sensor3: {{item.sensor3}}
+    sensor4: {{item.sensor4}}
+    tag: {{item.tag}}
+    lat: {{item.lat}}
+    timestamp: {{item.timestamp}}
+  </li>
+{% endfor %}
+</div>
+</body>
+</html>
