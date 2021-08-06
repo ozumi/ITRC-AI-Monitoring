@@ -106,23 +106,22 @@ Object.assign(mapManager, {
         if (dataNum == 1) {
             mapManager.DATA_NUM = 1;
             mapManager.DATA_PATH = "../static/data/points1.json";
-            mapManager.HEAT.setData(heatOne);
             mapManager.PATH = L.curve(pathOne, {color: color_blue, fill: false,
                 animate: {duration:3000, easing:"ease-in"}});
+            mapManager.HEAT.setData(heatOne);
 
         }else if (dataNum == 2) {
             mapManager.DATA_NUM = 2;
             mapManager.DATA_PATH = "../static/data/points2.json";
-            mapManager.HEAT.setData(heatTwo);
             mapManager.PATH = L.curve(pathTwo, {color: color_red, fill: false,
-                animate: {duration:3000, easing:"ease-in"}
-            });
+                animate: {duration:3000, easing:"ease-in"}});
+            mapManager.HEAT.setData(heatTwo);
         }else if (dataNum == 3) {
             mapManager.DATA_NUM = 3;
             mapManager.DATA_PATH = "../static/data/points3.json";
-            mapManager.HEAT.setData(heatThree);
             mapManager.PATH = L.curve(pathThree,{color: color_green, fill: false,
                 animate: {duration:3000, easing:"ease-in"}});
+            mapManager.HEAT.setData(heatThree);
           //  L.marker([38.402244, 127.488785], {icon: L.AwesomeMarkers.icon({icon: 'twitter', markerColor: 'blue', prefix: 'fa', spin:false}) }).addTo(mapManager.MAP);
 
             // var polyline = L.polycolor(latLngs, {

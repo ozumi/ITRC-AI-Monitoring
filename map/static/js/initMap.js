@@ -1,9 +1,6 @@
 /**
  * Created by juyoung on 2017-11-20.
  */
-/**
- * Created by skyjin on 2017-07-19.
- */
 var mapManager = {
     MAP: null,
     ROUTE_L: null,
@@ -136,9 +133,9 @@ var mapManager = {
                 mapManager.drawPath();
             }
             else {
-                mapManager.MAP.removeLayer(mapManager.PATH)
+                mapManager.MAP.removeLayer(mapManager.PATH);
             }
-        })
+        });
 
         $('#path-check').prop('checked', true);
 
