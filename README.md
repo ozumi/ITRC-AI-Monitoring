@@ -18,10 +18,14 @@
 ![Demo2](https://user-images.githubusercontent.com/8486747/128534507-2b0c8152-8813-411f-8690-f304849596b1.gif)
 
 ### How to Start ###
-1. pip3 install -r requirements.txt
-2. python3 manage.py makemigrations
-3. python3 manage.py migrate
-4. python3 manage.py shell
+<pre>
+<code>
+pip3 install -r requirements.txt
+python3 manage.py makemigrations
+python3 manage.py migrate
+python3 manage.py shell
     >>> from utils.sensor_import import data_migration
     >>> data_migration
-5. python3 manage.py runserver 0.0.0.0:<port>
+python3 manage.py runserver 0.0.0.0:<port>
+</pre>
+</code>
